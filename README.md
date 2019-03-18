@@ -12,5 +12,4 @@
     focused: state.get('header').get('focused')
     /* 等价于 */
     focused: state.getIn(['header','focused']);
-    /* 等价于 */
 ```
