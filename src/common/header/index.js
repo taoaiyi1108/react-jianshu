@@ -38,7 +38,10 @@ class Header extends Component {
                 >
                     <SearchInfoTitle>
                         热门搜索
-                    <SearchInfoSwitch onClick={() => { handleChangePage(page, totalPage) }}>换一批</SearchInfoSwitch>
+                        <SearchInfoSwitch onClick={() => { handleChangePage(page, totalPage, this.spinIcon) }}>
+                            <i ref={(icon) => { this.spinIcon = icon }} className="iconfont spin">&#xe851;</i>
+                            换一批
+                        </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoList>
                         {pageList}
@@ -50,7 +53,7 @@ class Header extends Component {
         }
     }
     render() {
-        const { focused } = this.props;
+        const { focused, handeInputlFocus, handeInputlBlur, list } = this.props;
         return (
             <HeaderWrapper>
                 <Logo />
@@ -68,12 +71,12 @@ class Header extends Component {
                             classNames="slide"
                         >
                             <Navserch
-                                onFocus={this.props.handeInputlFocus}
-                                className={this.props.focused ? 'focused' : ''}
-                                onBlur={this.props.handeInputlBlur}
+                                onFocus={() => { handeInputlFocus(list) }}
+                                className={focused ? 'focused' : ''}
+                                onBlur={handeInputlBlur}
                             />
                         </CSSTransition>
-                        <i className={focused ? 'focused iconfont' : 'iconfont'} >&#xe63d;</i>
+                        <i className={focused ? 'focused iconfont zoom' : 'iconfont zoom'} >&#xe63d;</i>
                         {this.getListArea()}
                     </SercherWrapper>
                 </Nav>
@@ -98,8 +101,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        handeInputlFocus() {
-            dispatch(actionCreators.getList());
+        handeInputlFocus(list) {
+            (list.size === 0) && dispatch(actionCreators.getList());
             dispatch(actionCreators.searchFocus());
         },
         handeInputlBlur() {
@@ -111,7 +114,14 @@ const mapDispatchToProps = (dispatch) => {
         handeMouseLeave() {
             dispatch(actionCreators.mouseLeave());
         },
-        handleChangePage(page, totalPage) {
+        handleChangePage(page, totalPage, spin) {
+            let originAngle = spin.style.transform.replace(/[^0-9]/ig, '');
+            if (originAngle) {
+                originAngle = parseInt(originAngle, 10);
+            } else {
+                originAngle = 0;
+            }
+            spin.style.transform = `rotate(${originAngle + 360}deg)`;
             if (page < totalPage) {
                 dispatch(actionCreators.changePage(page + 1));
             } else {

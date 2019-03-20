@@ -13,3 +13,8 @@
     /* 等价于 */
     focused: state.getIn(['header','focused']);
 ```
+
+#### 路由
+- `npm install react-router-dom --save`
+- render函数 ` <Route path='/' exact render={() => (<div>Home</div>)}></Route>`;
+- compone ` <Route path='/' exact component={Home}></Route>`;
