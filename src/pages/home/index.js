@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { HomeWrapper, HomeLeft, HomeRight } from './style';
 import { List, Recommend, Topic, Writer } from './components';
+import { actionCreators } from './store';
 
 class Home extends Component {
     render() {
@@ -18,6 +20,16 @@ class Home extends Component {
             </HomeWrapper>
         )
     }
+
+    componentDidMount() {
+        this.props.changeHomeData();
+    }
 }
 
-export default Home;
+const mapDispatch = (dispatch) => ({
+    changeHomeData() {
+        dispatch(actionCreators.getHemoInfo());
+    }
+})
+
+export default connect(null, mapDispatch)(Home);

@@ -12,10 +12,104 @@ export const HomeLeft = styled.div`
     width: 625px;
     .banner-img {
         display: block;
+        width: 100%;
         height: 270px;
     }
 `;
 export const HomeRight = styled.div`
     float: right;
-    width: 240px;
+    width: 280px;
+`;
+
+export const TopicWrapper = styled.div`
+    overflow: hidden;
+    padding: 20px 0 10px 0;
+    margin-left: -10px;
+    border-bottom: 1px solid #dcdcdc;
+`;
+
+export const TopicItem = styled.div`
+    float: left;
+    background-color: #f7f7f7;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #000000;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 18px;
+    .topic-pic {
+        width: 32px;
+        height: 32px;
+        vertical-align: middle;
+        margin-right: 10px;
+        display: block;
+        float: left;
+    }
+`;
+
+export const ListItem = styled.div`
+    padding: 20px 0;
+    border-bottom: 1px solid #dcdcdc;
+    overflow: hidden;
+    margin-bottom: 15px;
+    .list-pic {
+        width: 125px;
+        height: 100px;
+        display: block;
+        float: right;
+        border-radius: 10px;
+    }
+`;
+
+export const ListInfo = styled.div`
+    width: 500px;
+    float: left;
+    .title {
+        font-size: 18px;
+        line-height: 27px;
+        font-weight: bold;
+        color: #333;
+        &:hover {
+            text-decoration:underline
+        }
+    }
+    .desc {
+        font-size: 13px;
+        line-height: 24px;
+        color: #999;
+    }
+`;
+
+export const RecommendWrapper = styled.div`
+    padding: 30px 0 0 0;
+    .board {
+        margin-top: -4px;
+        padding-bottom: 4px;
+        min-height: 228px;
+    }
+`;
+
+export const RecommendItem = styled.div`
+    cursor: pointer;
+    height: 50px;
+    background: url(${(props) => props.imgUrl});
+    background-size: contain;
+    .recommenditem-pic {
+        width: 100%;
+        min-height: 50px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+    }
+`;
+
+export const WriterWrapper = styled.div`
+    width: 278px;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    height: 300px;
+    line-height: 300px;
+    text-align: center;
 `;
