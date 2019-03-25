@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { actionCreators } from './store';
@@ -56,7 +57,9 @@ class Header extends Component {
         const { focused, handeInputlFocus, handeInputlBlur, list } = this.props;
         return (
             <HeaderWrapper>
-                <Logo />
+                <Link to='/'>
+                    <Logo />
+                </Link>
                 <Nav>
                     <NavItem className="left active">首页</NavItem>
                     <NavItem className="left">下载App</NavItem>
