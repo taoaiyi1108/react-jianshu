@@ -22,3 +22,16 @@
 ##### PureComponent
 - PureComponent 与 Component 差别就在于前者底层自动实现 react的生命钩子 shouldComponentUpdate 来实现性能的优化
 - 注意：使用PureComponent时结合immutable来使用，如果没有immutable时直接使用PureComponent会有异常
+
+##### 获取路由传参
+- 动态路由传参
+    - `to={'/detail/:id}`
+    - `this.props.match.params.id`
+- 拼接参数
+    - `to={'/detail}` ==> 实例 `to={'/detail?id=' + 1}`
+    - `this.location.search` ==> `?id=1` 需要手动处理
+- 路由重定向 `<Redireact to='/'>`
+
+##### 异步组件 `react-loadable`
+    - `npm install react-loadable --save`
+    - 获取路由参数需要使用 `withRouter`
